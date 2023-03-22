@@ -1,0 +1,25 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\User\\Desktop\\ECommerceMicro\\Services\\PhotoStock\\PhotoStock.API\\wwwroot\\photos\\Image1.jpg",
+      "PackagePath": "staticwebassets\\photos\\Image1.jpg"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.PhotoStock.API.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.PhotoStock.API.props",
+      "PackagePath": "build\\PhotoStock.API.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.PhotoStock.API.props",
+      "PackagePath": "buildMultiTargeting\\PhotoStock.API.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.PhotoStock.API.props",
+      "PackagePath": "buildTransitive\\PhotoStock.API.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

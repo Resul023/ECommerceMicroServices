@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{25A503E1-17B2-412D-A20A-ED01060250E5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Product", "Product", "{5916776B-C6E5-4B53-83D7-854911193FA2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Product.API", "Services\Product\Product.API\Product.API.csproj", "{FD4DA5BD-6723-4B88-A0F7-DE2B30854D09}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D1CC2558-0858-41AA-A1C2-F02EF336E171}"
+	ProjectSection(SolutionItems) = preProject
+		Ports.txt = Ports.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{1A4CA8B1-FC48-4E1B-846C-D7555C01217C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared", "Shared\Shared\Shared.csproj", "{38578433-C66B-45FC-A76B-EB43ED385037}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IdentityServer", "IdentityServer", "{52B4B21C-C00E-46BD-A393-46AF4456F157}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer.API", "IdentityServer\IdentityServer.API\IdentityServer.API.csproj", "{014C1872-9C1F-42F4-A982-CE65BD31FDC8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PhotoStock", "PhotoStock", "{0991D0B0-FCE6-4431-BC8D-68347794D3A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoStock.API", "Services\PhotoStock\PhotoStock.API\PhotoStock.API.csproj", "{0CCC14BB-F25D-4C23-9EA1-D83E2AAE0EEC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FD4DA5BD-6723-4B88-A0F7-DE2B30854D09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD4DA5BD-6723-4B88-A0F7-DE2B30854D09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD4DA5BD-6723-4B88-A0F7-DE2B30854D09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD4DA5BD-6723-4B88-A0F7-DE2B30854D09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38578433-C66B-45FC-A76B-EB43ED385037}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38578433-C66B-45FC-A76B-EB43ED385037}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38578433-C66B-45FC-A76B-EB43ED385037}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38578433-C66B-45FC-A76B-EB43ED385037}.Release|Any CPU.Build.0 = Release|Any CPU
+		{014C1872-9C1F-42F4-A982-CE65BD31FDC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{014C1872-9C1F-42F4-A982-CE65BD31FDC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{014C1872-9C1F-42F4-A982-CE65BD31FDC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{014C1872-9C1F-42F4-A982-CE65BD31FDC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CCC14BB-F25D-4C23-9EA1-D83E2AAE0EEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CCC14BB-F25D-4C23-9EA1-D83E2AAE0EEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CCC14BB-F25D-4C23-9EA1-D83E2AAE0EEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CCC14BB-F25D-4C23-9EA1-D83E2AAE0EEC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5916776B-C6E5-4B53-83D7-854911193FA2} = {25A503E1-17B2-412D-A20A-ED01060250E5}
+		{FD4DA5BD-6723-4B88-A0F7-DE2B30854D09} = {5916776B-C6E5-4B53-83D7-854911193FA2}
+		{38578433-C66B-45FC-A76B-EB43ED385037} = {1A4CA8B1-FC48-4E1B-846C-D7555C01217C}
+		{014C1872-9C1F-42F4-A982-CE65BD31FDC8} = {52B4B21C-C00E-46BD-A393-46AF4456F157}
+		{0991D0B0-FCE6-4431-BC8D-68347794D3A5} = {25A503E1-17B2-412D-A20A-ED01060250E5}
+		{0CCC14BB-F25D-4C23-9EA1-D83E2AAE0EEC} = {0991D0B0-FCE6-4431-BC8D-68347794D3A5}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3BEA98E2-CE2D-49F9-A146-1568EC90286B}
+	EndGlobalSection
+EndGlobal

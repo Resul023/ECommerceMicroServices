@@ -1,0 +1,19 @@
+{
+  "Version": 1,
+  "Hash": "cFekLyRv+UV6vRruAFigl2cSaDgIAmSP76nVh4iKVs4=",
+  "Source": "PhotoStock.API",
+  "BasePath": "_content/PhotoStock.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "PhotoStock.API\\wwwroot",
+      "Source": "PhotoStock.API",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\ECommerceMicro\\Services\\PhotoStock\\PhotoStock.API\\wwwroot\\",
+      "BasePath": "_content/PhotoStock.API",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": []
+}
