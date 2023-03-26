@@ -1,0 +1,12 @@
+C:\Users\User\Desktop\ECommerceMicro\Services\Order\Domain.Core\bin\Debug\net7.0\Domain.Core.deps.json
+C:\Users\User\Desktop\ECommerceMicro\Services\Order\Domain.Core\bin\Debug\net7.0\Domain.Core.dll
+C:\Users\User\Desktop\ECommerceMicro\Services\Order\Domain.Core\bin\Debug\net7.0\Domain.Core.pdb
+C:\Users\User\Desktop\ECommerceMicro\Services\Order\Domain.Core\obj\Debug\net7.0\Domain.Core.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\ECommerceMicro\Services\Order\Domain.Core\obj\Debug\net7.0\Domain.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Desktop\ECommerceMicro\Services\Order\Domain.Core\obj\Debug\net7.0\Domain.Core.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\ECommerceMicro\Services\Order\Domain.Core\obj\Debug\net7.0\Domain.Core.AssemblyInfo.cs
+C:\Users\User\Desktop\ECommerceMicro\Services\Order\Domain.Core\obj\Debug\net7.0\Domain.Core.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\ECommerceMicro\Services\Order\Domain.Core\obj\Debug\net7.0\Domain.Core.dll
+C:\Users\User\Desktop\ECommerceMicro\Services\Order\Domain.Core\obj\Debug\net7.0\refint\Domain.Core.dll
+C:\Users\User\Desktop\ECommerceMicro\Services\Order\Domain.Core\obj\Debug\net7.0\Domain.Core.pdb
+C:\Users\User\Desktop\ECommerceMicro\Services\Order\Domain.Core\obj\Debug\net7.0\ref\Domain.Core.dll
