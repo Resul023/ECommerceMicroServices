@@ -40,3 +40,14 @@ C:\Users\User\Desktop\ECommerceMicro\Services\Payment\Payment.API\obj\Debug\net7
 C:\Users\User\Desktop\ECommerceMicro\Services\Payment\Payment.API\obj\Debug\net7.0\Payment.API.pdb
 C:\Users\User\Desktop\ECommerceMicro\Services\Payment\Payment.API\obj\Debug\net7.0\Payment.API.genruntimeconfig.cache
 C:\Users\User\Desktop\ECommerceMicro\Services\Payment\Payment.API\obj\Debug\net7.0\ref\Payment.API.dll
+C:\Users\User\Desktop\ECommerceMicro\Services\Payment\Payment.API\bin\Debug\net7.0\Automatonymous.dll
+C:\Users\User\Desktop\ECommerceMicro\Services\Payment\Payment.API\bin\Debug\net7.0\GreenPipes.dll
+C:\Users\User\Desktop\ECommerceMicro\Services\Payment\Payment.API\bin\Debug\net7.0\MassTransit.dll
+C:\Users\User\Desktop\ECommerceMicro\Services\Payment\Payment.API\bin\Debug\net7.0\MassTransit.AspNetCoreIntegration.dll
+C:\Users\User\Desktop\ECommerceMicro\Services\Payment\Payment.API\bin\Debug\net7.0\MassTransit.ExtensionsDependencyInjectionIntegration.dll
+C:\Users\User\Desktop\ECommerceMicro\Services\Payment\Payment.API\bin\Debug\net7.0\MassTransit.RabbitMqTransport.dll
+C:\Users\User\Desktop\ECommerceMicro\Services\Payment\Payment.API\bin\Debug\net7.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\User\Desktop\ECommerceMicro\Services\Payment\Payment.API\bin\Debug\net7.0\NewId.dll
+C:\Users\User\Desktop\ECommerceMicro\Services\Payment\Payment.API\bin\Debug\net7.0\Newtonsoft.Json.dll
+C:\Users\User\Desktop\ECommerceMicro\Services\Payment\Payment.API\bin\Debug\net7.0\Newtonsoft.Json.Bson.dll
+C:\Users\User\Desktop\ECommerceMicro\Services\Payment\Payment.API\bin\Debug\net7.0\RabbitMQ.Client.dll

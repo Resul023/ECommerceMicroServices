@@ -1,0 +1,39 @@
+name: dockercompose1933195186539626887
+services:
+  discountdb:
+    image: postgres
+    networks:
+      default: null
+  identitydb:
+    image: mcr.microsoft.com/dotnet/aspnet
+    networks:
+      default: null
+  mongodb:
+    image: mongodb
+    networks:
+      default: null
+  orderdb:
+    image: mcr.microsoft.com/dotnet/aspnet
+    networks:
+      default: null
+  product.api:
+    build:
+      context: C:\Users\User\Desktop\ECommerceMicro
+      dockerfile: Services/Product/Product.API/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: productapi
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 5011
+      published: "5011"
+      protocol: tcp
+  rabbitmq:
+    image: rabbitmq:3.11.11-management
+    networks:
+      default: null
+networks:
+  default:
+    name: dockercompose1933195186539626887_default

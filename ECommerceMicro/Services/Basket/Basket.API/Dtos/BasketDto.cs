@@ -10,6 +10,13 @@ public class BasketDto
 
     public decimal TotalPrice
     {
-        get => basketItems.Sum(x => x.Price * x.Quantity);
+        get {
+            if (this.DiscountRate>0)
+            {
+                return (decimal)basketItems.Sum(x => (x.Price * x.Quantity * (100 - DiscountRate)) / 100);
+
+            }
+            return basketItems.Sum(x => x.Price * x.Quantity);
+        } 
     }
 }

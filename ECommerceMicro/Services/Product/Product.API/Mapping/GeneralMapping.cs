@@ -6,6 +6,7 @@ public class GeneralMapping : Profile
     public GeneralMapping()
     {
         CreateMap<Category, CategoryDto>().ReverseMap();
+        CreateMap<Category, CategoryUpdateDto>().ReverseMap();
 
         CreateMap<Models.Product, ProductDto>().ReverseMap();
         CreateMap<Models.Product, ProductCreateDto>().ReverseMap();

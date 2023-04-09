@@ -1,0 +1,134 @@
+name: dockercompose1933195186539626887
+services:
+  basketdb:
+    container_name: basketdb
+    image: redis
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 6379
+      published: "6379"
+      protocol: tcp
+    restart: always
+  discountdb:
+    container_name: discountdb
+    environment:
+      POSTGRES_DB: discountdb
+      POSTGRES_PASSWORD: pwd123
+      POSTGRES_USER: postgres
+    image: postgres
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 5432
+      published: "5432"
+      protocol: tcp
+    restart: always
+    volumes:
+    - type: volume
+      source: discountdb_volume
+      target: /var/postgresql/data
+      volume: {}
+  orderdb:
+    container_name: orderdb
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: pwd123
+    image: mcr.microsoft.com/dotnet/aspnet
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 1433
+      published: "1433"
+      protocol: tcp
+    restart: always
+    volumes:
+    - type: volume
+      source: orderdb_volume
+      target: /var/opt/mssql
+      volume: {}
+  product.api:
+    build:
+      context: C:\Users\User\Desktop\ECommerceMicro
+      dockerfile: Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: Product.API
+    container_name: Product.API
+    entrypoint:
+    - tail
+    - -f
+    - /dev/null
+    labels:
+      com.microsoft.visual-studio.project-name: Product.API
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages
+        --additionalProbingPath /root/.nuget/fallbackpackages  "/app/Product.API.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    networks:
+      default: null
+    tty: true
+    volumes:
+    - type: bind
+      source: C:\Users\User\vsdbg\vs2017u5
+      target: /remote_debugger
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\User\AppData\Roaming/ASP.NET/Https
+      target: /root/.aspnet/https
+      read_only: true
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\User\AppData\Roaming/Microsoft/UserSecrets
+      target: /root/.microsoft/usersecrets
+      read_only: true
+      bind:
+        create_host_path: true
+  productdb:
+    container_name: productdb
+    image: mongodb/mongodb-community-server:latest
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 27017
+      published: "27017"
+      protocol: tcp
+    restart: always
+    volumes:
+    - type: volume
+      source: productdb_volume
+      target: /data/db
+      volume: {}
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:3.11.11-management
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 5672
+      published: "5672"
+      protocol: tcp
+    - mode: ingress
+      target: 15672
+      published: "15672"
+      protocol: tcp
+    restart: always
+networks:
+  default:
+    name: dockercompose1933195186539626887_default
+volumes:
+  discountdb_volume:
+    name: dockercompose1933195186539626887_discountdb_volume
+  orderdb_volume:
+    name: dockercompose1933195186539626887_orderdb_volume
+  productdb_volume:
+    name: dockercompose1933195186539626887_productdb_volume

@@ -2,5 +2,7 @@ Identity   - 5001
 Product    - 5011
 PhotoStock - 5012 
 Basket     - 5013
+Discount   - 5014
 Order      - 5015
 Payment    - 5016
+Gateway    - 5000

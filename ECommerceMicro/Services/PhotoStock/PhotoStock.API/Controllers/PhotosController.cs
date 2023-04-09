@@ -13,16 +13,17 @@ public class PhotosController : CustomControllerBases
     [HttpPost]
     public async Task<IActionResult> PhotoSave(IFormFile photo, CancellationToken cancellationToken)
     {
+        var fileName = Guid.NewGuid().ToString().Substring(1, 8) + photo.FileName;
         if (photo != null && photo.Length > 0)
         {
-            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/photos", Guid.NewGuid().ToString().Substring(1, 8)+photo.FileName);
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/photos", fileName);
 
             using var stream = new FileStream(path, FileMode.Create);
             await photo.CopyToAsync(stream, cancellationToken);
 
             var returnPath =  photo.FileName;
 
-            PhotoDto photoDto = new() { Url = returnPath };
+            PhotoDto photoDto = new() { Url = fileName };
 
             return CreateActionResultInstance(Response<PhotoDto>.Success(photoDto, 200));
         }

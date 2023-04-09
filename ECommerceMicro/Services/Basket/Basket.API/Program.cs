@@ -1,5 +1,7 @@
+using Basket.API.Consumers;
 using Basket.API.Services;
 using Basket.API.Settings;
+using MassTransit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
@@ -24,17 +26,39 @@ builder.Services.AddControllers(options =>
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddHttpContextAccessor();
-builder.Services.AddScoped<ISharedIdentityService,SharedIdentityService>();
 builder.Services.AddScoped<IBasketService, BasketService>();
 builder.Services.Configure<RedisSettings>(builder.Configuration.GetSection("RedisSettings"));
 builder.Services.AddSingleton<RedisService>(sp =>
 {
     var redisSettings = sp.GetRequiredService<IOptions<RedisSettings>>().Value;
     var redis = new RedisService(redisSettings.Host, redisSettings.Port);
+
     redis.Connect();
     return redis;
 });
+
+
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<ISharedIdentityService, SharedIdentityService>();
+//builder.Services.AddMassTransit(x =>
+//{
+//    x.AddConsumer<ProductNameChangedEventConsumer>();
+//    // Default Port : 5672
+//    x.UsingRabbitMq((context, cfg) =>
+//    {
+//        cfg.Host(builder.Configuration["RabbitMQUrl"], "/", host =>
+//        {
+//            host.Username("guest");
+//            host.Password("guest");
+//        });
+
+//        cfg.ReceiveEndpoint("product-name-changed-eventt", e =>
+//        {
+//            e.ConfigureConsumer<ProductNameChangedEventConsumer>(context);
+//        });
+//    });
+//});
+//builder.Services.AddMassTransitHostedService();
 
 var app = builder.Build();
 

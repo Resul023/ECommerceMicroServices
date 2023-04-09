@@ -1,23 +1,31 @@
 ﻿using AutoMapper;
+using Mass=MassTransit;
 using MongoDB.Driver;
 using Product.API.Dtos.Product;
 using Product.API.Settings;
 using Shared.Dtos;
+using Shared.Messages;
+
 namespace Product.API.Services;
 public class ProductService : IProductService
 {
     private readonly IMapper _mapper;
     private readonly IMongoCollection<Category> _categoryCollection;
     private readonly IMongoCollection<Models.Product> _productCollection;
+    private readonly Mass.IPublishEndpoint _publishEndpoint;
 
-    public ProductService(IMapper mapper, IDatabaseSettings databaseSettings)
+    public ProductService(
+        IMapper mapper, 
+        IDatabaseSettings databaseSettings, 
+        Mass.IPublishEndpoint publishEndpoint)
     {
         this._mapper = mapper;
-
         var client = new MongoClient(databaseSettings.ConnectionString);
         var database = client.GetDatabase(databaseSettings.DatabaseName);
+
         this._categoryCollection = database.GetCollection<Category>(databaseSettings.CategoryCollectionName);
         this._productCollection = database.GetCollection<Models.Product>(databaseSettings.ProductCollectionName);
+        this._publishEndpoint = publishEndpoint;
     }
 
     public async Task<Response<List<ProductDto>>> GetAllAsync()
@@ -69,6 +77,12 @@ public class ProductService : IProductService
         {
             return Response<NoContent>.Fail("Product not found", 404);
         }
+
+        await _publishEndpoint.Publish<ProductNameChangedEvent>(new ProductNameChangedEvent 
+        { 
+            ProductId = productUpdateDto.Id,
+            UpdatedName=productUpdateDto.Name 
+        });
 
         return Response<NoContent>.Success(204);
     }

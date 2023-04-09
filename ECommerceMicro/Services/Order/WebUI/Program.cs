@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.Extensions.Hosting;
 using System.Reflection;
+using MassTransit;
+using Application.Consumers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,8 +33,14 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<OrderDbContext>(opt =>
 {
-    opt.UseSqlServer(builder.Configuration.GetConnectionString("default"), configure =>
+    opt.UseSqlServer(builder.Configuration.GetConnectionString("default"),configure =>
     {
+        //configure.EnableRetryOnFailure
+        //(
+        //    maxRetryCount:10,
+        //    maxRetryDelay:TimeSpan.FromSeconds(5),
+        //    errorNumbersToAdd:null
+        //);
         configure.MigrationsAssembly("Infrastructure");
     });
 });
@@ -40,6 +48,31 @@ builder.Services.AddDbContext<OrderDbContext>(opt =>
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<ISharedIdentityService, SharedIdentityService>();
 builder.Services.AddMediatR(typeof(CreateOrderCommandHandler).Assembly);
+
+
+builder.Services.AddMassTransit(x =>
+{
+    x.AddConsumer<CreateOrderMessageCommandConsumer>();
+    x.AddConsumer<ProductNameChangedEventConsumer>();
+    // Default Port : 5672
+    x.UsingRabbitMq((context, cfg) =>
+    {
+        cfg.Host(builder.Configuration["RabbitMQUrl"], "/", host =>
+        {
+            host.Username("guest");
+            host.Password("guest");
+        });
+        cfg.ReceiveEndpoint("create-order-service", e =>
+        {
+            e.ConfigureConsumer<CreateOrderMessageCommandConsumer>(context);
+        });
+        cfg.ReceiveEndpoint("product-name-changed-event", e =>
+        {
+            e.ConfigureConsumer<ProductNameChangedEventConsumer>(context);
+        });
+    });
+});
+builder.Services.AddMassTransitHostedService();
 
 var app = builder.Build();
 

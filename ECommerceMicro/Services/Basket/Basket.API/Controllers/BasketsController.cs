@@ -31,7 +31,6 @@ public class BasketsController : CustomControllerBases
     {
         basketDto.UserId = _sharedIdentityService.GetUserId;
         var response = await _basketService.SaveOrUpdate(basketDto);
-
         return CreateActionResultInstance(response);
     }
 

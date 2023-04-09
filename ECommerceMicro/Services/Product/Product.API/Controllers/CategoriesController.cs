@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Product.API.Dtos.Product;
 using Product.API.Services;
 using Shared.ControllerBases;
 
@@ -34,6 +35,22 @@ public class CategoriesController : CustomControllerBases
     public async Task<IActionResult> Create(CategoryDto categoryDto)
     {
         var response = await _categoryService.CreateAsync(categoryDto);
+
+        return CreateActionResultInstance(response);
+    }
+
+    [HttpPut]
+    public async Task<IActionResult> Update(CategoryUpdateDto categoryUpdateDto)
+    {
+        var response = await _categoryService.UpdateAsync(categoryUpdateDto);
+
+        return CreateActionResultInstance(response);
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(string id)
+    {
+        var response = await _categoryService.DeleteAsync(id);
 
         return CreateActionResultInstance(response);
     }

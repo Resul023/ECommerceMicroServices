@@ -12,12 +12,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var assembly = typeof(Program).Assembly.GetName().Name;
 var defaultConString = builder.Configuration.GetConnectionString("default");
 
-
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(defaultConString, opt => opt.MigrationsAssembly(assembly)));
+    options.UseSqlServer(defaultConString));
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
@@ -35,7 +33,8 @@ builder.Services.AddIdentityServer(options =>
 .AddInMemoryClients(Config.Clients)
 .AddAspNetIdentity<ApplicationUser>()
 .AddDeveloperSigningCredential()
-.AddResourceOwnerValidator<IdentityResourceOwnerPasswordValidator>();
+.AddResourceOwnerValidator<IdentityResourceOwnerPasswordValidator>()
+.AddExtensionGrantValidator<TokenExchangeExtensionGrantValidator>();
 
 
 

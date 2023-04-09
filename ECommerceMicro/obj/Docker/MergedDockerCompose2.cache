@@ -1,0 +1,19 @@
+name: dockercompose1933195186539626887
+services:
+  product.api:
+    build:
+      context: C:\Users\User\Desktop\ECommerceMicro
+      dockerfile: Services/Product/Product.API/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: productapi
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 5011
+      published: "5011"
+      protocol: tcp
+networks:
+  default:
+    name: dockercompose1933195186539626887_default

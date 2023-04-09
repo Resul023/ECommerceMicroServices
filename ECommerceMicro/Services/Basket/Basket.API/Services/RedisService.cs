@@ -6,12 +6,13 @@ public class RedisService
 
     private readonly int _port;
 
-    private ConnectionMultiplexer _ConnectionMultiplexer;
+    public ConnectionMultiplexer _ConnectionMultiplexer;
 
     public RedisService(string host, int port)
     {
         this._host = host;
         this._port = port;
+
     }
 
     public void Connect() => _ConnectionMultiplexer = ConnectionMultiplexer.Connect($"{_host}:{_port}");

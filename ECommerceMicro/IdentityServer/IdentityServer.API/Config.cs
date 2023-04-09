@@ -14,6 +14,7 @@ public class Config
             new ApiResource("resource_discount"){Scopes={"discount_fullpermission"}},
             new ApiResource("resource_order"){Scopes={"order_fullpermission"}},
             new ApiResource("resource_payment"){Scopes={"payment_fullpermission"}},
+            new ApiResource("resource_gateway"){Scopes={"gateway_fullpermission"}},
             new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
         };
     public static IEnumerable<IdentityResource> IdentityResources =>
@@ -34,6 +35,7 @@ public class Config
             new ApiScope("discount_fullpermission","Permisson for Discount API"),
             new ApiScope("order_fullpermission","Permisson for Order API"),
             new ApiScope("payment_fullpermission","Permisson for Order API"),
+            new ApiScope("gateway_fullpermission","Permisson for Order API"),
 
             new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
         };
@@ -47,7 +49,8 @@ public class Config
                 ClientId="ReactClient",
                 ClientSecrets= {new Secret("secret".Sha256())},
                 AllowedGrantTypes= GrantTypes.ClientCredentials,
-                AllowedScopes={ "product_fullpermission", "photo_stock_fullpermission", IdentityServerConstants.LocalApi.ScopeName }
+                AllowedScopes={ "product_fullpermission", "photo_stock_fullpermission",
+                    "gateway_fullpermission",IdentityServerConstants.LocalApi.ScopeName }
             },
             new Client
             {
@@ -56,9 +59,10 @@ public class Config
                 AllowOfflineAccess=true,
                 ClientSecrets= {new Secret("secret".Sha256())},
                 AllowedGrantTypes= GrantTypes.ResourceOwnerPassword,
-                AllowedScopes={"order_fullpermission","discount_fullpermission",
-                    "basket_fullpermission", "order_fullpermission",
-                    "gateway_fullpermission","payment_fullpermission",
+                AllowedScopes={"order_fullpermission","basket_fullpermission",
+                    "order_fullpermission","gateway_fullpermission",
+                    "payment_fullpermission","product_fullpermission",
+                    "discount_fullpermission",
                     IdentityServerConstants.StandardScopes.Email, IdentityServerConstants.StandardScopes.OpenId,
                     IdentityServerConstants.StandardScopes.Profile, IdentityServerConstants.StandardScopes.OfflineAccess,
                     IdentityServerConstants.LocalApi.ScopeName,"roles" },
@@ -66,7 +70,15 @@ public class Config
                 RefreshTokenExpiration=TokenExpiration.Absolute,
                 AbsoluteRefreshTokenLifetime= (int) (DateTime.Now.AddDays(60)- DateTime.Now).TotalSeconds,
                 RefreshTokenUsage= TokenUsage.ReUse
-            }
+            },
+            new Client
+            {
+                ClientName="Token Exchange Client",
+                ClientId="TokenExhangeClient",
+                ClientSecrets= {new Secret("secret".Sha256())},
+                AllowedGrantTypes= new []{ "urn:ietf:params:oauth:grant-type:token-exchange" },
+                AllowedScopes={ "discount_fullpermission", "payment_fullpermission", IdentityServerConstants.StandardScopes.OpenId }
+            },
 
         };
 }

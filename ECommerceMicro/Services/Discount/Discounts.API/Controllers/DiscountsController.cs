@@ -12,7 +12,6 @@ namespace Discounts.API.Controllers;
 public class DiscountsController : CustomControllerBases
 {
     private readonly IDiscountService _discountService;
-
     private readonly ISharedIdentityService _sharedIdentityService;
 
     public DiscountsController(IDiscountService discountService, ISharedIdentityService sharedIdentityService)
@@ -49,7 +48,6 @@ public class DiscountsController : CustomControllerBases
     [HttpPost]
     public async Task<IActionResult> Create(Discount discount)
     {
-        discount.UserId = _sharedIdentityService.GetUserId;
         return CreateActionResultInstance(await _discountService.Create(discount));
     }
 

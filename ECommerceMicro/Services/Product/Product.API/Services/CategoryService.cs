@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using MongoDB.Driver;
+using Product.API.Dtos.Product;
 using Product.API.Settings;
 using Shared.Dtos;
+using Shared.Messages;
 
 namespace Product.API.Services;
 public class CategoryService : ICategoryService
@@ -42,6 +44,34 @@ public class CategoryService : ICategoryService
         }
 
         return Response<CategoryDto>.Success(_mapper.Map<CategoryDto>(category), 200); 
+    }
+
+    public async Task<Response<NoContent>> UpdateAsync(CategoryUpdateDto categoryUpdateDto)
+    {
+        var updateCategory = _mapper.Map<Category>(categoryUpdateDto);
+
+        var result = await _categoriesCollection.FindOneAndReplaceAsync(x => x.Id == categoryUpdateDto.Id, updateCategory);
+
+        if (result == null)
+        {
+            return Response<NoContent>.Fail("Category not found", 404);
+        }
+
+        return Response<NoContent>.Success(204);
+    }
+
+    public async Task<Response<NoContent>> DeleteAsync(string id)
+    {
+        var result = await _categoriesCollection.DeleteOneAsync(x => x.Id == id);
+
+        if (result.DeletedCount > 0)
+        {
+            return Response<NoContent>.Success(204);
+        }
+        else
+        {
+            return Response<NoContent>.Fail("Category not found", 404);
+        }
     }
 
 }
